@@ -1,0 +1,28 @@
+html, body {
+	height: 100%;
+	width: 100%;
+	padding:0px;
+	margin:0px;
+}
+
+body {
+	font-family: "Open Sans", "Helvetica", Tahoma, sans-serif;
+	color:#FFF;
+	background-image:url("./home/_system/css/img/bg_header.png");
+}
+
+.cover {
+	min-height: 100%;
+	width: 100%;
+	background: rgba(41,128,185,0.6);
+}
+	.cover .cover-inner {
+		padding:50px 0px 0px 0px;
+	}
+
+header {
+	text-align: center;
+}
+h1, h4 {
+	font-family: Open Sans, Helvetica, Tahoma, sans-serif;
+}
