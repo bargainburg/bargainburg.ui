@@ -1,0 +1,9 @@
+[submodule "home"]
+	path = home
+	url = git@github.com:startuphokie/bargainburg.admin.git
+[submodule "global"]
+	path = global
+	url = git@github.com:startuphokie/bargainburg.style.git
+[submodule "app"]
+	path = app
+	url = git@github.com:startuphokie/bargainburg.frontend.html5.git
