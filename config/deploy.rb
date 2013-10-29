@@ -1,10 +1,12 @@
-set :application, 'my app name'
-set :repo_url, 'git@example.com:me/my_repo.git'
+set :application, 'bargainburg.ui'
+set :repo_url, 'git@github.com:startuphokie/bargainburg.ui.git'
 
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
 
 # set :deploy_to, '/var/www/my_app'
-# set :scm, :git
+set :scm, :git
+
+set :git_enable_submodules, 1
 
 # set :format, :pretty
 # set :log_level, :debug
@@ -18,23 +20,12 @@ set :repo_url, 'git@example.com:me/my_repo.git'
 
 namespace :deploy do
 
-  desc 'Restart application'
+  desc 'Restart nginx'
   task :restart do
-    on roles(:app), in: :sequence, wait: 5 do
-      # Your restart mechanism here, for example:
-      # execute :touch, release_path.join('tmp/restart.txt')
-    end
-  end
-
-  after :restart, :clear_cache do
-    on roles(:web), in: :groups, limit: 3, wait: 10 do
-      # Here we can do anything such as:
-      # within release_path do
-      #   execute :rake, 'cache:clear'
-      # end
+    on roles(:web) do
+       execute "kill -HUP $( cat /usr/local/nginx/logs/nginx.pid )"
     end
   end
 
   after :finishing, 'deploy:cleanup'
-
 end
