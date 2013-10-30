@@ -1,5 +1,5 @@
 set :stage, :production
-set :deploy_to, '/app/bargainburg.co'
+set :deploy_to, '/app/app.deploy'
 set :branch, 'master'
 
 # Simple Role Syntax
