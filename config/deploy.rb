@@ -18,14 +18,14 @@ set :git_enable_submodules, 1
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
 # set :keep_releases, 5
 
-namespace :deploy do
-
-  desc 'Restart nginx'
-  task :restart do
-    on roles(:web) do
-       execute "kill -HUP $( cat /usr/local/nginx/logs/nginx.pid )"
-    end
-  end
-
-  after :finishing, 'deploy:cleanup'
-end
+# namespace :deploy do
+# 
+#   desc 'Restart nginx'
+#   task :restart do
+#     on roles(:web) do
+#        execute "kill -HUP $( cat /usr/local/nginx/logs/nginx.pid )"
+#     end
+#   end
+# 
+#   after :finishing, 'deploy:cleanup'
+# end
