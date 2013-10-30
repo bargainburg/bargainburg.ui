@@ -18,14 +18,23 @@ set :git_enable_submodules, 1
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
 # set :keep_releases, 5
 
-# namespace :deploy do
-# 
-#   desc 'Restart nginx'
-#   task :restart do
-#     on roles(:web) do
-#        execute "kill -HUP $( cat /usr/local/nginx/logs/nginx.pid )"
-#     end
-#   end
-# 
-#   after :finishing, 'deploy:cleanup'
-# end
+namespace :deploy do
+
+  desc 'Restart nginx'
+  task :restart do
+    on roles(:web) do
+       #execute "kill -HUP $( cat /usr/local/nginx/logs/nginx.pid )"
+    end
+  end
+
+  desc 'clone submodules'
+  task :clone_submodules do
+    on roles(:web) do
+      #TODO currently does not work. Capistrano does not keep .git directory
+      #execute "cd #{deploy_to}/current; git submodule init && git submodule update"
+    end
+  end
+
+  after :finishing, 'deploy:cleanup'
+  after :finished, 'deploy:clone_submodules'
+end
