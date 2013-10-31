@@ -1,5 +1,13 @@
+require 'capistrano/ext/multistage'
+
 set :application, 'bargainburg.ui'
-set :repo_url, 'git@github.com:startuphokie/bargainburg.ui.git'
+set :repository , 'git@github.com:startuphokie/bargainburg.ui.git'
+
+set :stages, ["staging", "production"]
+set :default_stage, "staging"
+
+set :normalize_asset_timestamps, false
+set :use_sudo, false
 
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
 
@@ -17,24 +25,20 @@ set :git_enable_submodules, 1
 
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
 # set :keep_releases, 5
-
 namespace :deploy do
-
-  desc 'Restart nginx'
+  task :migrate do
+    puts "    not doing migrate because not a Rails application."
+  end
+  task :finalize_update do
+    puts "    not doing finalize_update because not a Rails application."
+  end
+  task :start do
+    puts "    not doing start because not a Rails application."
+  end
+  task :stop do 
+    puts "    not doing stop because not a Rails application."
+  end
   task :restart do
-    on roles(:web) do
-       #execute "kill -HUP $( cat /usr/local/nginx/logs/nginx.pid )"
-    end
+    puts "    not doing restart because not a Rails application."
   end
-
-  desc 'clone submodules'
-  task :clone_submodules do
-    on roles(:web) do
-      #TODO currently does not work. Capistrano does not keep .git directory
-      #execute "cd #{deploy_to}/current; git submodule init && git submodule update"
-    end
-  end
-
-  after :finishing, 'deploy:cleanup'
-  after :finished, 'deploy:clone_submodules'
 end

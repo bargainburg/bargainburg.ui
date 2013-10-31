@@ -17,7 +17,12 @@ set :branch, 'staging'
 # definition into the server list. The second argument
 # something that quacks like a has can be used to set
 # extended properties on the server.
-server 'dev.bargainburg.co', user: 'dev', roles: %w{web}
+#
+# this is for cap v3
+# server 'dev.bargainburg.co', user: 'dev', roles: %w{web}
+
+set :user, "dev"
+server 'dev.bargainburg.co', :web, :app, :db, :primany => true
 
 # you can set custom ssh options
 # it's possible to pass any option but you need to keep in mind that net/ssh understand limited list of options
